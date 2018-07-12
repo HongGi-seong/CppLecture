@@ -58,45 +58,47 @@ class MyDate
 		{
 			day += factorDay ;
 				
-				// If the value of the day to be added exceeds 28
-				// It is determined whether the value of that month is added according to that month
-      			while ( day > 28 ) {
+			// If the value of the day to be added exceeds 28
+			// It is determined whether the value of that month is added according to that month
+      		while ( day > 28 ) {
 					
-					// February
-					if ( month == 2 ) {
-						day -= FEB ;
-						AddMonth ( 1 ) ;
-					}
+				// February
+				if ( month == 2 ) {
+					day -= FEB ;
+					AddMonth ( 1 ) ;
+				}
 
-					// Not added to month value
-					else if ( day == 29 ) 
-						break ;
+				// Not added to month value
+				else if ( day == 29 ) 
+					break ;
 
-					// Month with a date of 31 days
-					else if ( month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ) {
-						day -= LONGDAY ;
-						AddMonth ( 1 ) ;
-					}
+				// Month with a date of 31 days
+				else if ( ( month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 ) && ( day > 31 ) ) {
+					day -= LONGDAY ;
+					AddMonth ( 1 ) ;
+				}
 					
-					// Month with a date of 30 days
-					else if ( month == 4 || month == 6 || month == 9 || month == 11 ) {
-						day -= SHORTDAY ;
-						AddMonth ( 1 ) ;
-				}	
-			}
-
+				// Month with a date of 30 days
+				else if ( month == 4 || month == 6 || month == 9 || month == 11 ) {
+					day -= SHORTDAY ;
+					AddMonth ( 1 ) ;
+				}
+					
+				else 
+					break ;
+			}	
 		}
-		
-		
+
+
 		// This function is used to show the current date
 		// There is no return value
 		// There is no parameter
 		void ShowDate ( void ) 
 		{
 			// The exceeded date is calculated first
-			AddDay ( 0 ) ;
 			AddMonth ( 0 ) ;
-			cout << endl << "Current Date is: " << year << " : " << month << " : " << day << endl ;
+			AddDay ( 0 ) ;
+			cout << endl << "Current Date is: " << year << " / " << month << " / " << day << endl ;
 		}
 } ;
 
